@@ -95,7 +95,7 @@ class validationModel {
     validateValid(){
         // check custom fields
         let hasFields = false;
-        for(let i in this._validateFields) hasFields = true;
+        for(let i in this._validateFields) { hasFields = true; break; }
         // constan variable
         const model = this.hasModel(this.model);
         const field = hasFields ? this._validateFields : this.validateFields();
