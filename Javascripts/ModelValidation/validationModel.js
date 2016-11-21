@@ -50,8 +50,11 @@ class validators {
 // Class validate
 class validationModel {
 
-    constructor(model){
+    constructor(model, validateFields = {}){
+        // private variable
         this.model = this.hasModel(model);
+        this._validateFields = validateFields;
+        // public variable
         this.controls = {};
         this.errors = [];
         this.validateValid();
@@ -75,12 +78,14 @@ class validationModel {
             });
             return messages;
         }).call(this);
+        // delete variable
         delete this.model;
         delete this.validateFields;
         delete this.validateValid;
         delete this.hasModel;
         delete this.addError;
         delete this.addErrorModels;
+        delete this._validateFields;
     }
 
     validateFields(){ 
@@ -88,8 +93,12 @@ class validationModel {
     }
 
     validateValid(){
+        // check custom fields
+        let hasFields = false;
+        for(let i in this._validateFields) hasFields = true;
+        // constan variable
         const model = this.hasModel(this.model);
-        const field = this.validateFields();
+        const field = hasFields ? this._validateFields : this.validateFields();
         // find variable
         for(let variable in field){
             // find property
