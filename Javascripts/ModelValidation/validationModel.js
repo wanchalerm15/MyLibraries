@@ -1,3 +1,5 @@
+/* Developer by wanchaloem laokeut [ ttvone ] from addlink company @2016 */
+
 // Message validate
 const validation_messages = {
     required: 'The field is required.',
@@ -46,7 +48,7 @@ class validators {
     }
 };
 // Class validate
-class validation_model {
+class validationModel {
 
     constructor(model){
         this.model = this.hasModel(model);
