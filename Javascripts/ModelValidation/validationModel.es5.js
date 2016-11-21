@@ -151,6 +151,7 @@ var validationModel = function () {
             var hasFields = false;
             for (var i in this._validateFields) {
                 hasFields = true;
+                break;
             } // constan variable
             var model = this.hasModel(this.model);
             var field = hasFields ? this._validateFields : this.validateFields();
