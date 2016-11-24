@@ -9,12 +9,21 @@ class signin extends validationModel {
     }
 }
 
-let model = new signin({
+let requestData = {
     email: 'ttvone@hotmail.com',
     password: '154'
-});
+};
 
-console.log(model.controls);
+
+let model = new signin(requestData);
+
+// or
+// let model = new validationModel(requestData, {
+//     email: [validators.required, validators.email],  
+//     password: [validators.required, validators.pattern(/^[0-5]{3,5}$/)]  
+// });
+
+console.log(model.valid);
 
 
 /* For Javascript ES5 */
