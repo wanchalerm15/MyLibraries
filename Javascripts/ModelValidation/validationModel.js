@@ -1,4 +1,4 @@
-/* Developer by wanchaloem laokeut [ ttvone ] from addlink company @2016 version 1.10.3 */
+/* Developer by wanchaloem laokeut [ ttvone ] from addlink company @2016 version 1.10.4 */
 
 // Message validate
 const validation_messages = {
@@ -178,6 +178,7 @@ class validationModel {
         if (validFunction) {
             switch (patterns) {
                 case 'required':
+                case 'password':
                     // update new  27-01-2017 by loem add new property to validate error
                     let validatorsError = { property, validators: validFunction };
                     this.errors.push(validatorsError);
