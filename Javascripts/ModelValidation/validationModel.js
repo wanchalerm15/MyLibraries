@@ -1,11 +1,11 @@
-/* Developer by wanchaloem laokeut [ ttvone ] from addlink company @2016 version 1.10.2 */
+/* Developer by wanchaloem laokeut [ ttvone ] from addlink company @2016 version 1.10.3 */
 
 // Message validate
 const validation_messages = {
     required: 'The field "{0}" is required.',
     pattern: 'The field "{0}" is invalid.',
-    email: 'The field "{0}" is email.',
-    password: 'The field "{0}" is password.',
+    email: 'The email field "{0}" is invalid.',
+    password: 'The password field "{0}" is invalid.',
     maxlength: 'The field "{0}" is maximum {0}.',
     minlength: 'The field "{0}" is minimum {0}.',
     special_characters: 'The field "{0}" is special characters.',
