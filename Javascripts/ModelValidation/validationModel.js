@@ -1,4 +1,4 @@
-/* Developer by wanchaloem laokeut [ ttvone ] from addlink company @2016 version 1.10.0 */
+/* Developer by wanchaloem laokeut [ ttvone ] from addlink company @2016 version 1.10.1 */
 
 // Message validate
 const validation_messages = {
@@ -14,7 +14,8 @@ const validation_messages = {
 // Patterns validate
 class validators {
     static required(value) {
-        if (value.toString().trim() == '') { return { required: '' } }
+        if (value === null || value === undefined) return { required: '' }
+        if (value.toString().trim() == '') return { required: '' }
         return;
     }
     static email(value) {
@@ -56,11 +57,12 @@ class validationModel {
         this.model = this.hasModel(model);
         this._validateFields = validateFields;
         this._similarField = [];
+        this._nullValidationField = true;
         // public variable
         this.controls = {};
         this.errors = [];
         this.validateValid();
-        this.valid = this.errors.length == 0 && this._similarField.length > 0;
+        this.valid = (this.errors.length == 0 && this._similarField.length > 0) || this._nullValidationField;
         this.invalid = !this.valid;
         this.value = this.model;
         this.fields = (function() {
@@ -69,7 +71,6 @@ class validationModel {
             for (let i in field)
                 fields.push(i);
             return fields;
-
         }).call(this);
         this.messages = (function() {
             var messages = [];
@@ -123,7 +124,8 @@ class validationModel {
                         invalid: null
                     };
                     // check value must not object
-                    if (typeof model[property] == 'object') return;
+                    // update new 28-01-2017 by loem continue null and undefined
+                    if (typeof model[property] == 'object' && model[property] !== null && model[property] !== undefined) return;
                     // set functions
                     let validator = field[variable];
                     // set value
@@ -159,6 +161,10 @@ class validationModel {
                 this.errors.push(validatorsError);
                 this.addErrorModels(variable, validatorsError);
             }
+        }
+        // update new 28-01-2017 by loem check null of field
+        for (let field in this._validateFields) {
+            this._nullValidationField = false;
         }
     }
 
