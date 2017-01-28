@@ -1,4 +1,4 @@
-/* Developer by wanchaloem laokeut [ ttvone ] from addlink company @2016 version 1.10.1 */
+/* Developer by wanchaloem laokeut [ ttvone ] from addlink company @2016 version 1.10.2 */
 
 // Message validate
 const validation_messages = {
@@ -184,6 +184,7 @@ class validationModel {
                     this.addErrorModels(property, validatorsError);
                     break;
                 default:
+                    if (value === undefined || value === null) value = '';
                     if (value.toString().trim() != '') {
                         // update new  27-01-2017 by loem
                         let validatorsError = { property, validators: validFunction };
