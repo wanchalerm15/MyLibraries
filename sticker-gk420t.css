@@ -1,0 +1,36 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* หากเป็นใบมันงานจะใช้ 5cm และ 4cm */
+
+/* หากเป็นใบติดถุงงานจะใช้ 10cm และ 5cm */
+
+.stick-container {
+    page-break-after: always;
+    width: 10cm;
+    height: calc(5cm - 0.1cm);
+    padding: 4px;
+    display: inline-block;
+}
+
+.sticker-card {
+    border: solid 2px black;
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+@media print {
+    @page {
+        size: 10cm 5cm;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+}
